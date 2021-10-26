@@ -27,3 +27,13 @@ feature_film.click()
 #   Select TV movie checkbox
 tv_movie = driver.find_element_by_id('title_type-2')
 tv_movie.click()
+
+#   Select min release date
+min_release_date = driver.find_element_by_name('release_date-min')
+min_release_date.click()
+min_release_date.send_keys('1990')
+
+#   Select max release date
+max_release_date = driver.find_element_by_name('release_date-max')
+max_release_date.click()
+max_release_date.send_keys('2021')
