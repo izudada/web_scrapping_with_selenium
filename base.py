@@ -21,3 +21,9 @@ advanced_title = driver.find_element_by_link_text('Advanced Title Search')
 advanced_title.click()
 
 #   Select feature film checkbox
+feature_film = driver.find_element_by_id('title_type-1')
+feature_film.click()
+
+#   Select TV movie checkbox
+tv_movie = driver.find_element_by_id('title_type-2')
+tv_movie.click()
