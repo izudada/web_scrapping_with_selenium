@@ -81,4 +81,39 @@ submit.click()
 
 #   Current Url After form submission
 current_url = driver.current_url
-print(current_url)
+
+#   Get Request
+response = requests.get(current_url)
+
+#   Status Code
+stat_code = response.status_code
+
+#   Soup Object
+soup = BeautifulSoup(response.content, 'html.parser')
+
+#Starting point for result items
+list_items = soup.find_all('div', {'class': 'lister-item'}) 
+
+#   Movie title
+title = [result.find('h3').find('a').get_text() for result in list_items]
+
+#   Movie Year
+year = [result.find('h3').find('span', {'class': 'lister-item-year'}).get_text().replace('(', '').replace(')', '') for result in list_items]
+
+#   Duration
+duration = [result.find('span', {'class': 'runtime'}).get_text() for result in list_items]
+
+#   Genre
+genre = [result.find('span', {'class': 'genre'}).get_text().strip() for result in list_items]
+
+#   Rating
+rating = [result.find('div', {'class', 'ratings-imdb-rating'}).get_text().strip() for result in list_items]
+
+imdb_data = pd.DataFrame({
+    'Movie Title': title,
+    'Movie Year': year,
+    'Movie Duration': duration,
+    'Movie Genre': genre,
+    'Movie Rating': rating
+    })
+
