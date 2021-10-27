@@ -57,3 +57,22 @@ max_rating_dropdown.select_by_visible_text('10')
 #   Oscar Nominated
 oscar_nom = driver.find_element_by_id('groups-7')
 oscar_nom.click()
+
+#   Select Colors
+color = driver.find_element_by_id('colors-1')
+color.click()
+
+#   Select Language
+language = driver.find_element_by_name('languages')
+select_lang = Select(language)
+select_lang.select_by_visible_text('English')
+
+#   Select Display Options
+dispay_option = driver.find_element_by_id('search-count')
+dispay_option.click()
+display_dropdown = Select(dispay_option)
+display_dropdown.select_by_index(2)
+
+#   Submit button
+submit = driver.find_element_by_xpath('(//button[@type="submit"])[2]')
+submit.click()
