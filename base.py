@@ -8,6 +8,9 @@ from selenium.webdriver.support.ui import Select
 driver = webdriver.Chrome(os.getcwd() + "/chromedriver")
 driver.get('https://imdb.com')
 
+#   Maximize browser window
+driver.maximize_window()
+
 #   Dropdown Variable
 dropdown = driver.find_element_by_class_name('ipc-icon--arrow-drop-down')
 dropdown.click()
@@ -50,3 +53,7 @@ max_rating = driver.find_element_by_name('user_rating-max')
 max_rating.click()
 max_rating_dropdown = Select(max_rating)
 max_rating_dropdown.select_by_visible_text('10')
+
+#   Oscar Nominated
+oscar_nom = driver.find_element_by_id('groups-7')
+oscar_nom.click()
