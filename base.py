@@ -3,6 +3,8 @@ import pandas as pd
 import os
 import time
 from selenium.webdriver.support.ui import Select
+from bs4 import BeautifulSoup
+import requests
 
 
 driver = webdriver.Chrome(os.getcwd() + "/chromedriver")
@@ -76,3 +78,7 @@ display_dropdown.select_by_index(2)
 #   Submit button
 submit = driver.find_element_by_xpath('(//button[@type="submit"])[2]')
 submit.click()
+
+#   Current Url After form submission
+current_url = driver.current_url
+print(current_url)
