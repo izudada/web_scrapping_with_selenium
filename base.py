@@ -2,6 +2,7 @@ from selenium import webdriver
 import pandas as pd
 import os
 import time
+from selenium.webdriver.support.ui import Select
 
 
 driver = webdriver.Chrome(os.getcwd() + "/chromedriver")
@@ -37,3 +38,15 @@ min_release_date.send_keys('1990')
 max_release_date = driver.find_element_by_name('release_date-max')
 max_release_date.click()
 max_release_date.send_keys('2021')
+
+#   Select min user rating
+min_rating = driver.find_element_by_name('user_rating-min')
+min_rating.click()
+min_rating_dropdown = Select(min_rating)
+min_rating_dropdown.select_by_visible_text('1.0')
+
+#   Select max user rating
+max_rating = driver.find_element_by_name('user_rating-max')
+max_rating.click()
+max_rating_dropdown = Select(max_rating)
+max_rating_dropdown.select_by_visible_text('10')
