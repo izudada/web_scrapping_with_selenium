@@ -117,3 +117,5 @@ imdb_data = pd.DataFrame({
     'Movie Rating': rating
     })
 
+#   Excel Output
+imdb_data.to_excel('imdb_movie_data.xlsx', index=False)
